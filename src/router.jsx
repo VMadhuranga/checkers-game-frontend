@@ -1,6 +1,6 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
-import SignUpForm from "./components/SignUpForm";
 import App from "./App";
+import SignUpPage from "./components/SignUpPage";
 import signUp from "./actions/sign-up";
 
 const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "sign_up",
-        element: <SignUpForm />,
+        element: <SignUpPage />,
         action: async ({ request }) => {
           const formData = Object.fromEntries(
             (await request.formData()).entries(),
