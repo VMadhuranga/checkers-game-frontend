@@ -4,6 +4,7 @@ import SignUpPage from "./components/SignUpPage";
 import SignInPage from "./components/SignInPage";
 import signInUser from "./actions/sign-in-user";
 import signUpUser from "./actions/sign-up-user";
+import getFormData from "./utils/get-form-data";
 
 const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 const router = createBrowserRouter([
@@ -15,9 +16,7 @@ const router = createBrowserRouter([
         path: "sign_up",
         element: <SignUpPage />,
         action: async ({ request }) => {
-          const formData = Object.fromEntries(
-            (await request.formData()).entries(),
-          );
+          const formData = await getFormData(request);
 
           const errors = await signUpUser(baseUrl, formData);
           if (errors) {
@@ -31,9 +30,7 @@ const router = createBrowserRouter([
         path: "sign_in",
         element: <SignInPage />,
         action: async ({ request }) => {
-          const formData = Object.fromEntries(
-            (await request.formData()).entries(),
-          );
+          const formData = await getFormData(request);
 
           const { userId, errors } = await signInUser(baseUrl, formData);
           if (errors) {
