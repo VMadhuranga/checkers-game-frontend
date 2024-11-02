@@ -1,4 +1,4 @@
-import { Form, Link, useActionData } from "react-router-dom";
+import { Form, useActionData } from "react-router-dom";
 import FormInput from "./FormInput";
 
 const SignUpForm = () => {
@@ -28,9 +28,6 @@ const SignUpForm = () => {
         errors={errors?.confirm_password}
       />
       <button type="submit">Sign up</button>
-      <p>
-        Already have an account? <Link to={"/sign_in"}>Sign in</Link>
-      </p>
     </Form>
   );
 };
