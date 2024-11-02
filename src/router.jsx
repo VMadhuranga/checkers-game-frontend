@@ -2,8 +2,8 @@ import { createBrowserRouter, redirect } from "react-router-dom";
 import App from "./App";
 import SignUpPage from "./components/SignUpPage";
 import SignInPage from "./components/SignInPage";
-import signUp from "./actions/sign-up";
 import signInUser from "./actions/sign-in-user";
+import signUpUser from "./actions/sign-up-user";
 
 const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 const router = createBrowserRouter([
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
             (await request.formData()).entries(),
           );
 
-          const errors = await signUp(baseUrl, formData);
+          const errors = await signUpUser(baseUrl, formData);
           if (errors) {
             return errors;
           }
