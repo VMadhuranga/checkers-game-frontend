@@ -24,7 +24,7 @@ const router = createBrowserRouter([
             return errors;
           }
 
-          return redirect("/sign-in");
+          return redirect("/sign_in");
         },
       },
       {
