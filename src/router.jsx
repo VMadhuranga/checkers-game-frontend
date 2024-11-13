@@ -4,6 +4,7 @@ import SignUpPage from "./components/SignUpPage";
 import SignInPage from "./components/SignInPage";
 import User from "./components/User";
 import MainMenuPage from "./components/MainMenuPage";
+import ProfilePage from "./components/ProfilePage";
 import signInUser from "./actions/sign-in-user";
 import signUpUser from "./actions/sign-up-user";
 import getFormData from "./utils/get-form-data";
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <MainMenuPage />,
+          },
+          {
+            path: "profile",
+            element: <ProfilePage />,
           },
         ],
       },
