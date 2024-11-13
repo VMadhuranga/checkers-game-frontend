@@ -10,6 +10,7 @@ import signUpUser from "./actions/sign-up-user";
 import getFormData from "./utils/get-form-data";
 import getUserById from "./loaders/get-user-by-id";
 import refreshToken from "./loaders/refresh-token";
+import signOutUser from "./loaders/sign-out-user";
 
 const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 const router = createBrowserRouter([
@@ -43,6 +44,13 @@ const router = createBrowserRouter([
           }
 
           return redirect(`/${userId}`);
+        },
+      },
+      {
+        path: "sign_out",
+        loader: async () => {
+          await signOutUser(baseUrl);
+          return redirect("/sign_in");
         },
       },
       {
