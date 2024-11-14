@@ -11,6 +11,7 @@ import getFormData from "./utils/get-form-data";
 import getUserById from "./loaders/get-user-by-id";
 import refreshToken from "./loaders/refresh-token";
 import signOutUser from "./loaders/sign-out-user";
+import deleteUserById from "./loaders/delete-user-by-id";
 
 const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 const router = createBrowserRouter([
@@ -72,6 +73,14 @@ const router = createBrowserRouter([
           {
             path: "profile",
             element: <ProfilePage />,
+          },
+          {
+            path: "profile/delete",
+            loader: async ({ params }) => {
+              const { user_id } = params;
+              await deleteUserById(baseUrl, user_id);
+              return redirect("/sign_up");
+            },
           },
         ],
       },
